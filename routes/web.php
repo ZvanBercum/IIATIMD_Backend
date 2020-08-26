@@ -9,4 +9,7 @@ Route::get('/', function () {
 });
 
 
+// medicine routes
+Route::get('/medicine/index', 'medicineController@index')->middleware('checkToken');
+Route::get('/medicine/get/{id}', 'medicineController@get')->middleware('checkToken');
 
