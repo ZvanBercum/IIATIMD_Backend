@@ -3,7 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+use Tymon\JWTAuth\Exceptions\JWTException;
 class checkToken
 {
     /**
