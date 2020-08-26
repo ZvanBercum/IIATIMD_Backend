@@ -20,7 +20,7 @@ Route::group(['prefix' => 'api'], function()
 Route::get('/checkIfAuthenticated', 'AuthenticateController@checkIfAuthenticated')->middleware('checkToken');
 
 // medicine routes
-Route::get('/medicine/index', 'medicineController@index');
-Route::get('/medicine/get/{id}', 'medicineController@get');
-Route::post('/medicine/add', 'medicineController@add');
+Route::get('/medicine/index', 'medicineController@index')->middleware('checkToken');
+Route::get('/medicine/get/{id}', 'medicineController@get')->middleware('checkToken');
+Route::post('/medicine/add', 'medicineController@add')->middleware('checkToken');
 
