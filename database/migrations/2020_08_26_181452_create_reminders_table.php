@@ -15,6 +15,8 @@ class CreateRemindersTable extends Migration
     {
         Schema::create('reminders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('medicine_id');
+            $table->date('datum');
             $table->timestamps();
         });
     }
