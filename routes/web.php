@@ -10,6 +10,7 @@ Route::get('/', function () {
 
 
 // medicine routes
-Route::get('/medicine/index', 'medicineController@index')->middleware('checkToken');
-Route::get('/medicine/get/{id}', 'medicineController@get')->middleware('checkToken');
+Route::get('/medicine/index', 'medicineController@index');
+Route::get('/medicine/get/{id}', 'medicineController@get');
+Route::post('/medicine/add', 'medicineController@add');
 
