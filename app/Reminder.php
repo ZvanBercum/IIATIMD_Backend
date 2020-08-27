@@ -8,5 +8,5 @@ class Reminder extends Model
 {
     protected $table = 'reminders';
 
-    protected $fillable = ['medicine_id', 'datum'];
+    protected $fillable = ['medicine_id', 'datum', 'tijd'];
 }
