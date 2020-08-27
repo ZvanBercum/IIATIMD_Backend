@@ -26,3 +26,5 @@ Route::post('/medicine/add', 'medicineController@add')->middleware('checkToken')
 
 // reminder routes
 Route::post('/reminder/add', 'reminderController@add')->middleware('checkToken');
+
+Route::get('/reminder/index', 'reminderController@index')->middleware('checkToken');
