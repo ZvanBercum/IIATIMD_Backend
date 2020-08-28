@@ -17,6 +17,7 @@ class CreateRemindersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('medicine_id');
             $table->date('datum');
+            $table->string('dosering');
             $table->timestamps();
         });
     }

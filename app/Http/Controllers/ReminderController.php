@@ -61,21 +61,26 @@ class ReminderController extends Controller
 
 
         // dit alleen doen als 'wanneer' veld 7d is, dus als de reminder voor iedere dag is
-        if($veldenUitRequest['wanneer'] == '7d'){
+        if($veldenUitRequest['wanneer'] == 'Dagelijks'){
             // loop through dates array and create reminder in reminders table
             foreach($dates as $date){
 
-                // creeër logopedist en sla op in database
+                // creeër reminder
                 $reminder = Reminder::create([
                     'medicine_id' => $veldenUitRequest['id'],
                     'datum' => $date,
                     'tijd' => $veldenUitRequest['tijd']
                 ]);
 
-                $reminder->save();
+                if($reminder->save()){
+                    return response()->json(['saved' => 'Saved']);
+                }else{
+                    return response()->json(['saved' => 'NOTSAVED1']);
+
+                }
             }
             // voer dit uit als 'wanneer' de waarde 1w heeft dus als het maar 1 keer per week moet
-        } elseif($veldenUitRequest['wanneer'] == '1w'){
+        } elseif($veldenUitRequest['wanneer'] == 'Wekelijks'){
 
             $firstDateOfWeek = date("w", strtotime($dates[0]));
 
@@ -90,10 +95,18 @@ class ReminderController extends Controller
                         'tijd' => $veldenUitRequest['tijd']
                     ]);
 
-                    $reminder->save();
+                    if($reminder->save()){
+                        return response()->json(['saved' => 'Saved']);
+                    }else{
+                        return response()->json(['saved' => 'NOTSAVED2']);
+
+                    }
                 }
 
             }
+
+        }else{
+            return response()->json(['saved' => 'NOTSAVED3', 'velden'=>$veldenUitRequest]);
 
         }
 
